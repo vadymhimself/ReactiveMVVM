@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="bigData"
+            type="com.example.mvvmtest.model.BigData"/>
+
+        <variable
+            name="screenHandler"
+            type="com.example.mvvmtest.AdvancedActivity.ScreenHandler" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.mvvmtest.AdvancedActivity">
+
+        <ProgressBar
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_centerInParent="true"
+            android:layout_above="@+id/big_data"
+            android:visibility="@{ screenHandler.loading ? View.VISIBLE : View.GONE }"/>
+
+        <TextView
+            android:id="@+id/big_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="8dp"
+            android:textSize="16sp"
+            android:text="@{ bigData.data }"
+            android:visibility="@{ bigData != null ? View.VISIBLE : View.GONE }"/>
+
+        <Button
+            android:id="@+id/btn_load_big_data"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/big_data"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@{ screenHandler.buttonText }"
+            android:visibility="@{ screenHandler.loading ? View.GONE : View.VISIBLE }"/>
+
+    </RelativeLayout>
+</layout>
